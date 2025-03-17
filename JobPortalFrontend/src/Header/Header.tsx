@@ -4,6 +4,7 @@ import {
   IconBriefcaseFilled,
   IconSettings,
 } from "@tabler/icons-react";
+import NavLinks from "./NavLinks";
 
 const Header = () => {
   return (
@@ -12,12 +13,7 @@ const Header = () => {
         <IconBriefcaseFilled className="h-8 w-8" stroke={1.25} />
         <div className="text-3xl items-center font-semibold">JobFlick</div>
       </div>
-      <div className="flex gap-5">
-        <a href="">Find Jobs</a>
-        <a href="">Find Talent</a>
-        <a href="">Upload Job</a>
-        <a href="">About Us</a>
-      </div>
+      {NavLinks()}
       <div className="flex gap-3 items-center">
         <div className="flex items-center gap-2">
           <div>Anthony</div>
