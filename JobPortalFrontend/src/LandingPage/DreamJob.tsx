@@ -47,7 +47,7 @@ const DreamJob = () => {
           <div className="w-fit absolute -left-5 top-[28%] border-bright-sun-400 border rounded-lg p-2 backdrop-blur-md gap-3 flex flex-col">
             <div className="flex gap-2 items-center">
               <div className="w-10 h-10 p-1 bg-mine-shaft-900 rounded-lg">
-                <img src="/google.png" alt="" />
+                <img src="/Companies/googleOL.svg" alt="" />
               </div>
               <div className="text-sm text-mine-shaft-100">
                 <div>Software Engineer</div>
