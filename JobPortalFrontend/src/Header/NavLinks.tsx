@@ -21,7 +21,6 @@ const NavLinks = () => {
   ];
 
   const location = useLocation();
-  console.log("location pathname: ", location.pathname);
   return (
     <div className="flex gap-5 h-full items-center text-mine-shaft-300">
       {links.map((link, index) => (

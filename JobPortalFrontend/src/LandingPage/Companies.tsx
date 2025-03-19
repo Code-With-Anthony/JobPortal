@@ -17,6 +17,7 @@ const Companies = () => {
               src={`/Companies/${company}.png`}
               alt={company}
               className="h-14"
+              loading="lazy"
             />
           </div>
         ))}

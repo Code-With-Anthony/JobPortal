@@ -32,7 +32,7 @@ const DreamJob = () => {
       </div>
       <div className="w-[55%] flex items-center justify-center">
         <div className="w-[30rem] relative">
-          <img src="/boy.png" alt="boy" />
+          <img src="/boy.png" alt="boy" loading="lazy" />
           <div className="w-fit absolute -right-10 top-[50%] border-bright-sun-400 border rounded-lg p-2 backdrop-blur-md">
             <div className="text-center text-mine-shaft-100 mb-1 text-sm">
               10K+ got job

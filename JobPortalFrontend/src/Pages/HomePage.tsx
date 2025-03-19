@@ -1,23 +1,24 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Companies from "../LandingPage/Companies";
+import { lazy, Suspense } from "react";
 import DreamJob from "../LandingPage/DreamJob";
-import JobCategory from "../LandingPage/JobCategory";
-import Subscribe from "../LandingPage/Subscribe";
-import Testimonials from "../LandingPage/Testimonials";
-import Working from "../LandingPage/Working";
+
+// Lazy load less critical components
+const Companies = lazy(() => import("../LandingPage/Companies"));
+const JobCategory = lazy(() => import("../LandingPage/JobCategory"));
+const Working = lazy(() => import("../LandingPage/Working"));
+const Testimonials = lazy(() => import("../LandingPage/Testimonials"));
+const Subscribe = lazy(() => import("../LandingPage/Subscribe"));
 
 const HomePage = () => {
   return (
     <div className="min-h-[100vh] bg-mine-shaft-950">
-      <Header />
       <DreamJob />
-      <Companies />
-      <JobCategory />
-      <Working />
-      <Testimonials />
-      <Subscribe />
-      <Footer />
+      <Suspense fallback={<div className="component-loading">Loading...</div>}>
+        <Companies />
+        <JobCategory />
+        <Working />
+        <Testimonials />
+        <Subscribe />
+      </Suspense>
     </div>
   );
 };

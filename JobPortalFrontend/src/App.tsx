@@ -1,21 +1,32 @@
 import { MantineProvider } from "@mantine/core";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
+import { lazy, Suspense } from "react";
 import "./App.css";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+
+// Lazy load page components
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const FindJobs = lazy(() => import("./Pages/FindJobs"));
 
 function App() {
+  const theme = {
+    fontFamily: "Poppins, sans-serif",
+  };
+
   return (
-    <MantineProvider>
+    <MantineProvider defaultColorScheme="dark" theme={theme}>
       <BrowserRouter>
-        <Routes>
-          <Route path="*" element={<HomePage />} />
-          {/* <Route path="/find-jobs" element={<FindJobs />} />
-            <Route path="/find-talent" element={<FindTalent />} />
-            <Route path="/upload-job" element={<UploadJob />} />
-            <Route path="/about-us" element={<AboutUs />} /> */}
-        </Routes>
+        <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+          <Header />
+          <Routes>
+            <Route path="/find-jobs" element={<FindJobs />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+          <Footer />
+        </Suspense>
       </BrowserRouter>
     </MantineProvider>
   );
