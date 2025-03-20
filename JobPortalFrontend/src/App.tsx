@@ -6,10 +6,12 @@ import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import FindTalentPage from "./Pages/FindTalentPage";
+import TalentProfilePage from "./Pages/TalentProfilePage";
 
 // Lazy load page components
 const HomePage = lazy(() => import("./Pages/HomePage"));
-const FindJobs = lazy(() => import("./Pages/FindJobs"));
+const FindJobs = lazy(() => import("./Pages/FindJobsPage"));
 
 function App() {
   const theme = {
@@ -23,6 +25,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/find-jobs" element={<FindJobs />} />
+            <Route path="/find-talent" element={<FindTalentPage />} />
+            <Route path="/talent-profile" element={<TalentProfilePage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
           <Footer />

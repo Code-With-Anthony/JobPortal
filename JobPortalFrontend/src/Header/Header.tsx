@@ -16,7 +16,7 @@ const Header = () => {
       <NavLinks />
       <div className="flex gap-3 items-center">
         <div className="flex items-center gap-2">
-          <div>Anthony</div>
+          <div>Rose</div>
           <Avatar src="avatar.png" alt="it's me" />
         </div>
         <div className="bg-mine-shaft-900 p-1.5 rounded-full">

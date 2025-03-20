@@ -5,7 +5,7 @@ import Sort from "./Sort";
 const Jobs = () => {
   return (
     <div className="p-5">
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-5">
         <div className="text-2xl font-semibold">Recommeded Jobs</div>
         <Sort />
       </div>
