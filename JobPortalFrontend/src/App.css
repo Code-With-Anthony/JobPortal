@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@layer base{
+    ul, ol{
+        list-style: revert;
+        font-size: medium;
+    }
+    p{
+        font-size: medium;
+    }
+    li{
+        margin-left: 1em;
+    }
+}
+
 @theme {
     --color-mine-shaft-50: #f6f6f6;
     --color-mine-shaft-100: #e7e7e7;
