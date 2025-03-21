@@ -3,8 +3,14 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import JobDescription from "../JobDescription/JobDescription";
 import RecommendedJobs from "../JobDescription/RecommendedJobs";
+import { useEffect } from "react";
 
 const JobDescriptionPage = () => {
+  useEffect(() => {
+    // Scroll to top when the component is mounted or visited
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-[100vh] bg-mine-shaft-950 font-['poppins'] p-4">
       <Link to="/find-jobs" className="my-5 inline-block">

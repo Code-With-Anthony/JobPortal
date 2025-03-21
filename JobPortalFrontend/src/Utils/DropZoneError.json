@@ -1,0 +1,8 @@
+{
+  "file-too-large": "File size exceeds the 5MB limit.",
+  "file-too-small": "File is too small to be uploaded.",
+  "file-invalid-type": "Invalid file type. Only PDF and DOC files are allowed.",
+  "too-many-files": "You can upload only one file at a time.",
+  "file-not-readable": "File could not be read. Try again.",
+  "file-aborted": "Upload was canceled."
+}

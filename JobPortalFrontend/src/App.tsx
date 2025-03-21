@@ -16,6 +16,7 @@ import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import "@mantine/tiptap/styles.css";
 import JobDescriptionPage from "./Pages/JobDescriptionPage";
+import ApplyJobPage from "./Pages/ApplyJobPage";
 
 function App() {
   const theme = createTheme({
@@ -57,17 +58,20 @@ function App() {
     <MantineProvider defaultColorScheme="dark" theme={theme}>
       <BrowserRouter>
         <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
-          <Header />
-          <Divider size="xs" mx="md" />
-          <Routes>
-            <Route path="/find-jobs" element={<FindJobs />} />
-            <Route path="/find-talent" element={<FindTalentPage />} />
-            <Route path="/jobs" element={<JobDescriptionPage />} />
-            <Route path="/post-job" element={<PostJobPage />} />
-            <Route path="/talent-profile" element={<TalentProfilePage />} />
-            <Route path="*" element={<HomePage />} />
-          </Routes>
-          <Footer />
+          <div className="relative">
+            <Header />
+            <Divider size="xs" mx="md" />
+            <Routes>
+              <Route path="/find-jobs" element={<FindJobs />} />
+              <Route path="/find-talent" element={<FindTalentPage />} />
+              <Route path="/jobs" element={<JobDescriptionPage />} />
+              <Route path="/apply-job" element={<ApplyJobPage />} />
+              <Route path="/post-job" element={<PostJobPage />} />
+              <Route path="/talent-profile" element={<TalentProfilePage />} />
+              <Route path="*" element={<HomePage />} />
+            </Routes>
+            <Footer />
+          </div>
         </Suspense>
       </BrowserRouter>
     </MantineProvider>

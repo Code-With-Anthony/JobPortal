@@ -1,20 +1,18 @@
 import { Button } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import Profile from "../TalentProfile/Profile";
-import { profile } from "../Data/TalentData";
-import RecommendTalent from "../TalentProfile/RecommendTalent";
+import ApplyJobForm from "../ApplyJob/ApplyJobForm";
 import { useEffect } from "react";
 
-const TalentProfilePage = () => {
+const ApplyJobPage = () => {
   useEffect(() => {
     // Scroll to top when the component is mounted or visited
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-[100vh] bg-mine-shaft-950 font-['poppins'] p-4">
-      <Link to="/find-talent" className="my-4 inline-block">
+    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] p-4">
+      <Link to="/jobs" className="my-5 inline-block">
         <Button
           leftSection={<IconArrowLeft size={20} />}
           color="#ffbd20"
@@ -23,12 +21,9 @@ const TalentProfilePage = () => {
           Back
         </Button>
       </Link>
-      <div className="flex gap-5">
-        <Profile {...profile} />
-        <RecommendTalent />
-      </div>
+      <ApplyJobForm />
     </div>
   );
 };
 
-export default TalentProfilePage;
+export default ApplyJobPage;

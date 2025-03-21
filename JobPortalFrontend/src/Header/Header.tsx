@@ -5,14 +5,15 @@ import {
   IconSettings,
 } from "@tabler/icons-react";
 import NavLinks from "./NavLinks";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="w-full bg-mine-shaft-950 font-['poppins'] h-20 px-6 text-white flex justify-between items-center">
-      <div className="flex gap-1 items-center text-bright-sun-400">
+      <Link to="/" className="flex gap-1 items-center text-bright-sun-400">
         <IconBriefcaseFilled className="h-8 w-8" stroke={1.25} />
         <div className="text-3xl items-center font-semibold">JobFlick</div>
-      </div>
+      </Link>
       <NavLinks />
       <div className="flex gap-3 items-center">
         <div className="flex items-center gap-2">
