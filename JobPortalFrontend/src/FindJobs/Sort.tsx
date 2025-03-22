@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Combobox, useCombobox } from "@mantine/core";
+import { ActionIcon, Combobox, useCombobox } from "@mantine/core";
 import { IconAdjustments } from "@tabler/icons-react";
 
 const opt = [
@@ -37,7 +37,13 @@ const Sort = () => {
           className="border gap-2 text-sm border-bright-sun-400 flex items-center px-2 py-1 rounded-xl cursor-pointer"
         >
           {selectedItem}
-          <IconAdjustments className="text-bright-sun-400 h-5 w-5" />
+          <ActionIcon
+            color="bright-sun.4"
+            variant="transparent"
+            aria-label="setting"
+          >
+            <IconAdjustments className="text-bright-sun-400 h-5 w-5" />
+          </ActionIcon>
         </div>
       </Combobox.Target>
 

@@ -13,8 +13,8 @@ const TalentProfilePage = () => {
   }, []);
 
   return (
-    <div className="min-h-[100vh] bg-mine-shaft-950 font-['poppins'] p-4">
-      <Link to="/find-talent" className="my-4 inline-block">
+    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] p-4">
+      <Link to="/find-talent" className="my-5 inline-block">
         <Button
           leftSection={<IconArrowLeft size={20} />}
           color="#ffbd20"

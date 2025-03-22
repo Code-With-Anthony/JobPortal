@@ -90,7 +90,7 @@ const JobDescription = () => {
               </div>
             </div>
           </div>
-          <Link to="">
+          <Link to="/company">
             <Button color="bright-sun.4" variant="light">
               Company Page
             </Button>
