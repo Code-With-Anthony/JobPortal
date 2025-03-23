@@ -15,8 +15,8 @@ const NavLinks = () => {
       url: "/post-job",
     },
     {
-      name: "About Us",
-      url: "/about-us",
+      name: "Posted Job",
+      url: "/posted-job",
     },
   ];
 

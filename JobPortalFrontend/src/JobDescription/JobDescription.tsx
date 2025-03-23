@@ -5,7 +5,7 @@ import { card, desc, skills } from "../Data/JobDescData";
 import { JobDescriptionType } from "../Interface/Jobs/JobDescription";
 import DomPurify from "dompurify";
 //"@ts-expect-error";
-const JobDescription = () => {
+const JobDescription = (props: any) => {
   const data = DomPurify.sanitize(desc);
   return (
     <div className="w-2/3">
@@ -24,13 +24,19 @@ const JobDescription = () => {
         <div className="flex flex-col gap-2 items-center">
           <Link to="/apply-job">
             <Button color="bright-sun.4" variant="light" size="sm">
-              Apply
+              {props.edit ? "Edit" : "Apply"}
             </Button>
           </Link>
-          <IconBookmark
-            className="text-bright-sun-400 hover:cursor-pointer"
-            stroke={1.5}
-          />
+          {props.edit ? (
+            <Button color="red.5" variant="outline" size="sm">
+              Delete
+            </Button>
+          ) : (
+            <IconBookmark
+              className="text-bright-sun-400 hover:cursor-pointer"
+              stroke={1.5}
+            />
+          )}
         </div>
       </div>
       <Divider my="xl" />
