@@ -13,6 +13,26 @@
     }
 }
 
+.gradient-background {
+    background: linear-gradient(300deg, #4f4f4f, #2d2d2d, #f0e7f6);
+    background-size: 180% 180%;
+    animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 @theme {
     --color-mine-shaft-50: #f6f6f6;
     --color-mine-shaft-100: #e7e7e7;
