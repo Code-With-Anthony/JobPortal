@@ -1,15 +1,18 @@
-import { ActionIcon, Divider } from "@mantine/core";
+import { ActionIcon, Divider, TagsInput, Textarea } from "@mantine/core";
 import {
   IconBriefcase,
   IconDeviceFloppy,
   IconMapPin,
   IconPencil,
+  IconPlus,
 } from "@tabler/icons-react";
 import ExperienceCard from "./ExperienceCard";
 import CertificationCard from "./CertificationCard";
 import { useState } from "react";
 import SelectInput from "./SelectInout";
 import select from "../Data/Profile";
+import ExperienceInput from "./ExperienceInput";
+import CertificationInput from "./CertificationInput";
 
 interface ProfileProps {
   name: string;
@@ -40,6 +43,10 @@ interface Certificationcard {
 
 const Profile = (props: ProfileProps) => {
   const [edit, setEdit] = useState([false, false, false, false, false]);
+  const [about, setAbout] = useState(props.about);
+  const [skills, setSkills] = useState<string[]>(props.skills);
+  const [addExperience, setAddExperience] = useState(false);
+  const [addCertification, setAddCertification] = useState(false);
   const handleEdit = (index: number) => {
     const newEdit = [...edit];
     newEdit[index] = !newEdit[index];
@@ -111,9 +118,20 @@ const Profile = (props: ProfileProps) => {
             )}
           </ActionIcon>
         </div>
-        <div className="text-sm text-mine-shaft-300 text-justify">
-          {props.about}
-        </div>
+        {edit[1] ? (
+          <Textarea
+            value={about}
+            onChange={(event) => setAbout(event.currentTarget.value)}
+            autosize
+            minRows={3}
+            autoFocus
+            placeholder="Enter about yourself"
+          />
+        ) : (
+          <div className="text-sm text-mine-shaft-300 text-justify">
+            {props.about}
+          </div>
+        )}
       </div>
       <Divider mx="xs" my="xl" />
       <div className="px-3">
@@ -133,33 +151,108 @@ const Profile = (props: ProfileProps) => {
             )}
           </ActionIcon>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {props.skills.map((skill, index) => (
-            <div
-              key={index}
-              className="bg-bright-sun-300/15 text-sm font-medium rounded-xl text-bright-sun-400 px-3 py-1"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
+        {edit[2] ? (
+          <TagsInput
+            label="Add skills to submit a tag"
+            placeholder="Enter tag"
+            splitChars={[",", " ", "|"]}
+            value={skills}
+            onChange={setSkills}
+          />
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {props.skills.map((skill, index) => (
+              <div
+                key={index}
+                className="bg-bright-sun-300/15 text-sm font-medium rounded-xl text-bright-sun-400 px-3 py-1"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <Divider mx="xs" my="xl" />
       <div className="px-3">
-        <div className="text-2xl font-semibold mb-5">Experience</div>
+        <div className="text-2xl font-semibold mb-5 flex justify-between">
+          Experience{" "}
+          <div className="flex gap-2">
+            <ActionIcon
+              size="lg"
+              variant="subtle"
+              aria-label="Settings"
+              color="bright-sun.4"
+              onClick={() => setAddExperience(true)}
+            >
+              <IconPlus className="h-4/5 w-4/5" />
+            </ActionIcon>
+            <ActionIcon
+              size="lg"
+              variant="subtle"
+              aria-label="Settings"
+              color="bright-sun.4"
+              onClick={() => handleEdit(3)}
+            >
+              {edit[3] ? (
+                <IconDeviceFloppy className="h-4/5 w-4/5" />
+              ) : (
+                <IconPencil className="h-4/5 w-4/5" />
+              )}
+            </ActionIcon>
+          </div>
+        </div>
         <div className="flex flex-col gap-8">
           {props.experience.map((exp) => (
-            <ExperienceCard {...exp} key={exp.company + exp.startDate} />
+            <ExperienceCard
+              {...exp}
+              key={exp.company + exp.startDate}
+              edit={edit[3]}
+            />
           ))}
+          {addExperience && <ExperienceInput setEdit={setAddExperience} add />}
         </div>
       </div>
       <Divider mx="xs" my="xl" />
       <div className="px-3">
-        <div className="text-2xl font-semibold mb-5"> Certifications</div>
+        <div className="text-2xl font-semibold mb-5 flex justify-between">
+          {" "}
+          Certifications{" "}
+          <div className="flex gap-2">
+            <ActionIcon
+              size="lg"
+              variant="subtle"
+              aria-label="Settings"
+              color="bright-sun.4"
+              onClick={() => setAddCertification(true)}
+            >
+              <IconPlus className="h-4/5 w-4/5" />
+            </ActionIcon>
+            <ActionIcon
+              size="lg"
+              variant="subtle"
+              aria-label="Settings"
+              color="bright-sun.4"
+              onClick={() => handleEdit(4)}
+            >
+              {edit[4] ? (
+                <IconDeviceFloppy className="h-4/5 w-4/5" />
+              ) : (
+                <IconPencil className="h-4/5 w-4/5" />
+              )}
+            </ActionIcon>
+          </div>
+        </div>
         <div className="flex flex-col gap-8">
           {props.certifications.map((certi) => (
-            <CertificationCard {...certi} key={certi.certificateId} />
+            <CertificationCard
+              {...certi}
+              key={certi.certificateId}
+              edit={edit[4]}
+            />
           ))}
+          {addCertification && (
+            <CertificationInput setEdit={setAddCertification} />
+          )}
         </div>
       </div>
     </div>

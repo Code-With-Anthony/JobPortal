@@ -1,3 +1,7 @@
+import { Button } from "@mantine/core";
+import { useState } from "react";
+import ExperienceInput from "./ExperienceInput";
+
 interface ExperienceType {
   title: string;
   company: string;
@@ -5,9 +9,11 @@ interface ExperienceType {
   startDate: string;
   endDate: string;
   description: string;
+  edit: boolean;
 }
 const ExperienceCard = (props: ExperienceType) => {
-  return (
+  const [edit, setEdit] = useState(false);
+  return !edit ? (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between">
         <div className="flex gap-2 items-center">
@@ -32,7 +38,23 @@ const ExperienceCard = (props: ExperienceType) => {
       <div className="text-sm text-mine-shaft-300 text-justify">
         {props.description}
       </div>
+      {props.edit && (
+        <div className="flex gap-5">
+          <Button
+            color="#ffbd20"
+            variant="outline"
+            onClick={() => setEdit(true)}
+          >
+            Edit
+          </Button>
+          <Button color="red.8" variant="light">
+            Delete
+          </Button>
+        </div>
+      )}
     </div>
+  ) : (
+    <ExperienceInput description={props.description} setEdit={setEdit} />
   );
 };
 
