@@ -1,15 +1,15 @@
 import { createTheme, Divider, MantineProvider } from "@mantine/core";
+import { lazy, memo, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy, Suspense, memo } from "react";
-import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 
 // Required CSS
-import "./App.css";
-import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
-import "@mantine/tiptap/styles.css";
+import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
+import "@mantine/tiptap/styles.css";
+import "./App.css";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./Pages/HomePage"));

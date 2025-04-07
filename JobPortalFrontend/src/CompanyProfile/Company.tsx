@@ -1,5 +1,11 @@
 import { Avatar, Divider, Tabs } from "@mantine/core";
-import { IconMapPin } from "@tabler/icons-react";
+import {
+  IconBrandInstagram,
+  IconBrandMeta,
+  IconBrandX,
+  IconMail,
+  IconMapPin,
+} from "@tabler/icons-react";
 import AboutCompany from "./AboutCompany";
 import CompanyJobs from "./CompanyJobs";
 import CompanyEmployees from "./CompanyEmployees";
@@ -28,6 +34,24 @@ const Company = () => {
         <div className="flex gap-1 text-lg items-center text-mine-shaft-300">
           <IconMapPin stroke={1.5} className="h-5 w-5" /> New York, United
           States
+        </div>
+        <div className="flex gap-4 text-lg items-center text-mine-shaft-300 mt-2">
+          <IconBrandMeta
+            stroke={1.5}
+            className="h-7 w-7 hover:text-blue-400 hover:cursor-pointer transition-all duration-300 ease-in-out"
+          />
+          <IconBrandInstagram
+            stroke={1.5}
+            className="h-7 w-7 hover:text-pink-500 hover:cursor-pointer transition-all duration-300 ease-in-out"
+          />
+          <IconBrandX
+            stroke={1.5}
+            className="h-7 w-7 hover:text-gray-500 hover:cursor-pointer transition-all duration-300 ease-in-out"
+          />
+          <IconMail
+            stroke={1.5}
+            className="h-7 w-7 hover:text-white hover:cursor-pointer transition-all duration-300 ease-in-out"
+          />
         </div>
       </div>
       <Divider mx="xs" my="xl" />
