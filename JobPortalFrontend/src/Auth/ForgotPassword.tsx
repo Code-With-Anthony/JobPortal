@@ -1,4 +1,3 @@
-import { IconArrowLeft } from "@tabler/icons-react";
 import {
   Anchor,
   Box,
@@ -10,13 +9,15 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
+import { IconArrowLeft } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
 
-interface ForgotPasswordProps {
-  toggle: (value: string) => void;
-}
-
-export function ForgotPassword({ toggle }: ForgotPasswordProps) {
+export function ForgotPassword() {
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
   return (
     <Container size={460}>
       <Title className="title !text-lg" ta="center">
@@ -37,11 +38,11 @@ export function ForgotPassword({ toggle }: ForgotPasswordProps) {
           c="dimmed"
           size="sm"
           className="control hover:!text-bright-sun-400"
-          onClick={() => toggle("login")}
+          onClick={handleLoginClick}
         >
           <Center inline>
             <IconArrowLeft size={12} stroke={1.5} />
-            <Box ml={5}>Back</Box>
+            <Box ml={5}>Back To Login</Box>
           </Center>
         </Anchor>
         <Button className="control" variant="light" color="bright-sun.4">

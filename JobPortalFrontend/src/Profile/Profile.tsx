@@ -1,4 +1,11 @@
-import { ActionIcon, Divider, TagsInput, Textarea } from "@mantine/core";
+import {
+  ActionIcon,
+  Avatar,
+  Divider,
+  TagsInput,
+  Textarea,
+  Tooltip,
+} from "@mantine/core";
 import {
   IconBriefcase,
   IconDeviceFloppy,
@@ -6,14 +13,14 @@ import {
   IconPencil,
   IconPlus,
 } from "@tabler/icons-react";
-import ExperienceCard from "./ExperienceCard";
-import CertificationCard from "./CertificationCard";
 import { useState } from "react";
-import SelectInput from "./SelectInout";
+import logos from "../assets/programmingLogos/index.js";
 import select from "../Data/Profile";
-import ExperienceInput from "./ExperienceInput";
+import CertificationCard from "./CertificationCard";
 import CertificationInput from "./CertificationInput";
-
+import ExperienceCard from "./ExperienceCard";
+import ExperienceInput from "./ExperienceInput";
+import SelectInput from "./SelectInout";
 interface ProfileProps {
   name: string;
   role: string;
@@ -42,6 +49,7 @@ interface Certificationcard {
 }
 
 const Profile = (props: ProfileProps) => {
+  console.log("props skills", props.skills);
   const [edit, setEdit] = useState([false, false, false, false, false]);
   const [about, setAbout] = useState(props.about);
   const [skills, setSkills] = useState<string[]>(props.skills);
@@ -164,9 +172,14 @@ const Profile = (props: ProfileProps) => {
             {props.skills.map((skill, index) => (
               <div
                 key={index}
-                className="bg-bright-sun-300/15 text-sm font-medium rounded-xl text-bright-sun-400 px-3 py-1"
+                className=" text-sm font-medium rounded-xl text-bright-sun-400 px-3 py-1"
               >
-                {skill}
+                <Tooltip.Group openDelay={300} closeDelay={100}>
+                  <Tooltip label={skill} withArrow>
+                    <Avatar src={logos[skill.toLowerCase()]} alt={skill} />
+                  </Tooltip>
+                </Tooltip.Group>
+                {/* {skill} */}
               </div>
             ))}
           </div>

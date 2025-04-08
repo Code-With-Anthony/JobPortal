@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -16,7 +18,6 @@ const UserSchema = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      required: true,
       unique: true,
     },
     password: {
@@ -25,9 +26,9 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["Company", "Talent"],
-      default: "Talent",
-      required: true,
+      enum: ["Company", "Applicant"],
+      default: "Applicant",
+      // required: true,
     },
     isEmailVerified: {
       type: Boolean,
@@ -101,6 +102,13 @@ const UserSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+UserSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
 
 UserSchema.index({ email: 1, phoneNumber: 1 }, { unique: true });
 

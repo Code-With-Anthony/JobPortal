@@ -22,8 +22,10 @@ const ApplyJobPage = lazy(() => import("./Pages/ApplyJobPage"));
 const CompanyPage = lazy(() => import("./Pages/CompanyPage"));
 const PostedJobPage = lazy(() => import("./Pages/PostedJobPage"));
 const JobHistoryPage = lazy(() => import("./Pages/JobHistoryPage"));
-const LoginSignupPage = lazy(() => import("./Pages/LoginSignupPage"));
+const SignupPage = lazy(() => import("./Pages/SignupPage"));
+const LoginPage = lazy(() => import("./Pages/LoginPage"));
 const ProfilePage = lazy(() => import("./Pages/ProfilePage"));
+const ForgotPasswordPage = lazy(() => import("./Pages/ForgotPasswordPage"));
 
 // Application Theme
 const theme = createTheme({
@@ -66,19 +68,28 @@ const MemoizedHeader = memo(Header);
 const MemoizedFooter = memo(Footer);
 
 function App() {
+  const currentPath = window.location.pathname;
   return (
     <MantineProvider defaultColorScheme="dark" theme={theme}>
       <BrowserRouter>
         <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
           <div className="relative">
-            <MemoizedHeader />
-            <Divider
-              size="xs"
-              mx="md"
-              style={{
-                display: window.location.pathname === "/auth" ? "none" : "",
-              }}
-            />
+            {currentPath !== "/login" &&
+              currentPath !== "/register" &&
+              currentPath !== "forgot-password" && (
+                <>
+                  <MemoizedHeader />
+                  <Divider
+                    size="xs"
+                    mx="md"
+                    style={{
+                      display:
+                        window.location.pathname === "/auth" ? "none" : "",
+                    }}
+                  />
+                </>
+              )}
+
             <Routes>
               <Route path="/find-jobs" element={<FindJobs />} />
               <Route path="/find-talent" element={<FindTalentPage />} />
@@ -90,10 +101,14 @@ function App() {
               <Route path="/job-history" element={<JobHistoryPage />} />
               <Route path="/talent-profile" element={<TalentProfilePage />} />
               <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/auth" element={<LoginSignupPage />} />
+              <Route path="/register" element={<SignupPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
               <Route path="*" element={<HomePage />} />
             </Routes>
-            <MemoizedFooter />
+            {currentPath !== "/login" &&
+              currentPath !== "/register" &&
+              currentPath !== "forgot-password" && <MemoizedFooter />}
           </div>
         </Suspense>
       </BrowserRouter>

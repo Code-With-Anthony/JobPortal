@@ -13,10 +13,10 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { upperFirst, useToggle } from "@mantine/hooks";
-import { GoogleButton } from "./GoogleButton";
-import { ForgotPassword } from "./ForgotPassword";
 import { IconCircle, IconCircleFilled } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ForgotPassword } from "./ForgotPassword";
+import { GoogleButton } from "./GoogleButton";
 import { InputPassword } from "./InputPassword";
 // import { TwitterButton } from "./TwitterButton";
 
@@ -41,6 +41,20 @@ const Auth = (props: PaperProps) => {
           : null,
     },
   });
+
+  // Use useEffect to update the URL based on form type
+  useEffect(() => {
+    const location = window.location.pathname;
+    if (location === "/register") {
+      toggle("register"); // Navigate to the register route
+    } else if (location === "/login") {
+      toggle("login"); // Navigate to the login route
+    } else if (location === "/forgotPassword") {
+      toggle("forgotPassword"); // Navigate to the forgot-password route
+    }
+  }, [toggle]);
+
+  console.log("type", type);
 
   return (
     <Paper radius="md" p="xl" withBorder {...props}>
